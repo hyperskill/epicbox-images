@@ -6,6 +6,7 @@ ENV PATH /opt/scala-$SCALA_VERSION/bin:$PATH
 RUN apt-get update && \
     apt-get install -y --no-install-recommends wget && \
     rm -rf /var/lib/apt/lists/* && \
+    ls /usr/lib/jvm/ &&\
     touch /usr/lib/jvm/java-8-openjdk-amd64/release && \
     wget -O - https://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /opt
 
