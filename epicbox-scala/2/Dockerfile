@@ -1,4 +1,4 @@
-FROM openjdk:8u181-slim
+FROM openjdk:8u342-slim
 
 ENV SCALA_VERSION 2.13.12
 ENV PATH /opt/scala-$SCALA_VERSION/bin:$PATH
