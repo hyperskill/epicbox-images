@@ -16,7 +16,7 @@ if __name__ == '__main__':
     if code != OK_CODE:
         score = 0
         for line in stderr:
-            if ASSERTION_ERROR_LINE in line:
+            if line.startswith(ASSERTION_ERROR_LINE):
                 capture_feedback = True
                 output.append(line[len(ASSERTION_ERROR_LINE):])
                 continue
