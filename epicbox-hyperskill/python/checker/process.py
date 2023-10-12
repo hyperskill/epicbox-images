@@ -3,7 +3,7 @@ import json
 FAILED_TEST_BEGIN = '#educational_plugin FAILED + '
 FAILED_TEST_CONTINUE = '#educational_plugin '
 OK_CODE = '0'
-ASSERTION_ERROR_LINE = 'AssertionError:'
+ASSERTION_ERROR_LINE = 'AssertionError: '
 
 if __name__ == '__main__':
     score = 1
