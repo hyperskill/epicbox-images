@@ -16,9 +16,10 @@ if __name__ == '__main__':
         score = 0
         for line_index, line in enumerate(stderr):
             if line.startswith(ASSERTION_ERROR_LINE):
-                output.append(line[len(ASSERTION_ERROR_LINE):])
-                output.extend(stderr[line_index + 1:])
-                feedback = '\n'.join(output).strip()
+                feedback = '\n'.join([
+                    line[len(ASSERTION_ERROR_LINE):],
+                    *stderr[line_index + 1:]
+                ]).strip()
                 break
         if not feedback:
             feedback = (
