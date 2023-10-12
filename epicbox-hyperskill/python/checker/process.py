@@ -2,29 +2,27 @@ import json
 
 FAILED_TEST_BEGIN = '#educational_plugin FAILED + '
 FAILED_TEST_CONTINUE = '#educational_plugin '
+OK_CODE = '0'
+ASSERTION_ERROR_LINE = 'AssertionError:'
 
 if __name__ == '__main__':
     score = 1
     feedback = ''
     output = []
+    capture_feedback = False
     code = open('code.txt').read().strip()
     stdout = open('stdout.txt').read().splitlines()
     stderr = open('stderr.txt').read().splitlines()
-    if code != '0':
+    if code != OK_CODE:
         score = 0
-        feedback = (
-            'Cannot check the submission.\n\nPerhaps your program '
-            'has fallen into an infinite loop or created too many objects in memory. '
-            'If you are sure that this is not the case, please send the report to support@hyperskill.org\n'
-            'stdout:\n{stdout}\n\nstderr:\n{stderr}'
-            .format(stdout='\n'.join(stdout), stderr='\n'.join(stderr))
-        )
-        if stderr[0] == 'F':
-            for line in stderr:
-                if line.startswith('F'):
-                    continue
+        for line in stderr:
+            if ASSERTION_ERROR_LINE in line:
+                capture_feedback = True
+                output.append(line[len(ASSERTION_ERROR_LINE):])
+                continue
+            if capture_feedback:
                 output.append(line)
-            feedback = '\n'.join(output).strip()
+        feedback = '\n'.join(output).strip()
     elif any(line.startswith(FAILED_TEST_BEGIN) for line in stdout):
         score = 0
         output_started = False
