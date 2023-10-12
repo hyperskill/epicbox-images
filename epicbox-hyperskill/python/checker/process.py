@@ -18,8 +18,17 @@ if __name__ == '__main__':
             if line.startswith(ASSERTION_ERROR_LINE):
                 output.append(line[len(ASSERTION_ERROR_LINE):])
                 output.extend(stderr[line_index + 1:])
+                feedback = '\n'.join(output).strip()
                 break
-        feedback = '\n'.join(output).strip()
+        if not feedback:
+            feedback = (
+                'Cannot check the submission.\n\nPerhaps your program '
+                'has fallen into an infinite loop or created too many objects in memory. '
+                'If you are sure that this is not the case, please send the report to support@hyperskill.org\n'
+                'stdout:\n{stdout}\n\nstderr:\n{stderr}'
+                .format(stdout='\n'.join(stdout), stderr='\n'.join(stderr))
+            )
+
     elif any(line.startswith(FAILED_TEST_BEGIN) for line in stdout):
         score = 0
         output_started = False
