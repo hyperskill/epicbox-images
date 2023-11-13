@@ -15,7 +15,7 @@ RUN mkdir /checker && \
     rm /checker/kotlin.zip
 
 RUN curl -L -o /checker/hs-test.jar \
-    https://github.com/polischuks/hs-test/releases/download/v11.0.0/hs-test-v11.0.0.jar
+    https://github.com/hyperskill/hs-test/releases/download/v11.0.0/hs-test-v11.0.0.jar
 
 ENV PATH="/checker/kotlinc/bin:$PATH"
 
