@@ -5,7 +5,7 @@ RUN apk add --no-cache g++ make cmake
 RUN apk add --no-cache python3 openjdk17-jdk curl bash
 
 RUN apk add --no-cache python3-dev py3-pip gcc musl-dev linux-headers && \
-    pip3 install https://github.com/polischuks/hs-test-python/archive/refs/tags/v11.0.0.tar.gz && \
+    pip3 install https://github.com/hyperskill/hs-test-python/archive/refs/tags/v11.0.0.tar.gz && \
     apk del --no-cache python3-dev py3-pip linux-headers
 
 RUN mkdir /checker && \
