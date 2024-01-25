@@ -1,4 +1,4 @@
-FROM openjdk:11.0.1-slim
+FROM openjdk:18.0.2-slim
 
 COPY java_lookup_main.sh /usr/local/bin/java_lookup_main.sh
 RUN chmod +x /usr/local/bin/java_lookup_main.sh
