@@ -1,4 +1,4 @@
-FROM python:3.10.6-slim
+FROM python:3.12.1-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NLTK_DIR=/usr/local/nltk_data
