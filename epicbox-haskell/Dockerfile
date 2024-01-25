@@ -1,4 +1,4 @@
-FROM haskell:8.8.4
+FROM haskell:9.8.1
 
 RUN cabal update && \
     cabal install --global --lib random lens mtl transformers parsec split
