@@ -1,4 +1,4 @@
-FROM openjdk:17-slim
+FROM openjdk:18-slim
 
 RUN apt-get update && \
     apt-get install --yes python3 unzip curl && \
