@@ -1,5 +1,4 @@
-FROM golang:1.21.1-bookworm
-MAINTAINER Stepik Team <team@stepik.org>
+FROM golang:1.18.3-stretch
 
 ENV GO111MODULE=on
 

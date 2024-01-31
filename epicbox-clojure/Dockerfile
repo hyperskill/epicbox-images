@@ -1,4 +1,3 @@
-FROM clojure:tools-deps-1.9.0.397-alpine
-MAINTAINER Stepik Team <ab@stepik.org>
+FROM clojure:tools-deps-1.11.1.1413-alpine
 
 RUN adduser -DH -h /sandbox sandbox
