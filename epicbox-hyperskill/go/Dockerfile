@@ -12,12 +12,14 @@ RUN apt-get update && apt-get install -y \
     gcc \
     linux-headers-amd64 \
     unzip \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN python3 -m venv /venv && \
-    . /venv/bin/activate && \
-    pip install aiosmtpd beautifulsoup4 pyyaml && \
-    pip install https://github.com/hyperskill/hs-test-python/archive/v11.0.0.tar.gz
+    && python3 -m venv /venv \
+    && . /venv/bin/activate \
+    && pip install aiosmtpd beautifulsoup4 pyyaml \
+    && pip install https://github.com/hyperskill/hs-test-python/archive/v11.0.0.tar.gz \
+    && apt-get remove -y gcc python3-dev linux-headers-amd64 \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 RUN mkdir /checker && \
     curl -L -o /checker/kotlin.zip \
