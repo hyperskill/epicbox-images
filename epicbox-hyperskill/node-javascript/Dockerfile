@@ -1,4 +1,4 @@
-FROM node:18.17.1-alpine
+FROM node:21.6.2-alpine
 
 RUN apk add --no-cache python3 openjdk17-jdk curl bash
 
