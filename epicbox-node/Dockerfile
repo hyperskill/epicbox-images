@@ -1,3 +1,3 @@
-FROM node:18.17.1-alpine
+FROM node:21.7.3-alpine
 
 RUN adduser -DH -h /sandbox sandbox
