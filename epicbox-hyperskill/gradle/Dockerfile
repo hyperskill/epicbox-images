@@ -1,4 +1,4 @@
-FROM gradle:7.3-jdk11
+FROM gradle:8.8-jdk11
 
 COPY --chown=gradle checker/ /checker/
 
