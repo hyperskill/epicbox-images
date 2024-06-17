@@ -1,4 +1,4 @@
-FROM node:18.17.1-bullseye-slim
+FROM node:22.3.0-bullseye-slim
 
 RUN apt-get update && \
     apt-get install -y python3 \
