@@ -1,4 +1,4 @@
-FROM ruby:2.5.3-alpine
+FROM ruby:3.3.3-alpine
 
 RUN adduser -DH -h /sandbox sandbox && \
     apk add --no-cache --virtual build-dependencies build-base && \
