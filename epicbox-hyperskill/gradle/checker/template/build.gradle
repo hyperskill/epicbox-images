@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'org.scala-lang:scala-library:2.13.9'
+    implementation 'org.scala-lang:scala-library:2.13.12'
     testImplementation 'com.github.hyperskill:hs-test:v12.0.0'
 }
 
