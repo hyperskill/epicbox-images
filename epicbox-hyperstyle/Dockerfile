@@ -18,7 +18,7 @@ ENV GOLANG_LINT_DIRECTORY   ${LINTERS_DIRECTORY}/golangci-lint
 
 RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev python3-dev git
 
-RUN git clone --branch develop https://github.com/hyperskill/hyperstyle.git /review
+RUN git clone --branch main https://github.com/hyperskill/hyperstyle.git /review
 
 RUN mkdir -p ${CHECKSTYLE_DIRECTORY} && \
     mkdir -p ${DETEKT_DIRECTORY} && \
