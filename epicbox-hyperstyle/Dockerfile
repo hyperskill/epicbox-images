@@ -1,4 +1,4 @@
-FROM stepik/hyperstyle-base:py3.8.11-java11.0.11-node14.17.3-go1.18.5
+FROM hyperskill.azurecr.io/hyperstyle-base:py3.10.14-java11.0.11-node14.17.3-go1.18.5
 
 ENV ESLINT_VERSION          7.5.0
 
@@ -60,10 +60,16 @@ RUN go mod download && \
     rm main.go &&  \
     chmod ugo-w go.mod go.sum
 
-RUN pip install -r ./review/requirements-build.txt --verbose
-RUN pip install -r ./review/requirements.txt --verbose
-RUN pip install -r ./review/requirements-test.txt --verbose
+ARG POETRY_VERSION=1.8.3
+RUN pip install poetry==${POETRY_VERSION} \
+  && poetry config virtualenvs.create false \
+  && python -m venv /hyperstyle
 
-RUN pip install ./review --use-feature=in-tree-build
+WORKDIR /review
+
+RUN . /hyperstyle/bin/activate \
+  && poetry install --no-interaction --no-ansi --no-cache --no-root
+
+WORKDIR /
 
 CMD ["/bin/bash"]
