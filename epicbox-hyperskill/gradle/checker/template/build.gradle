@@ -4,7 +4,7 @@ plugins {
     id 'scala'
 }
 
-sourceCompatibility = 21
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
@@ -15,7 +15,7 @@ repositories {
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'org.scala-lang:scala-library:2.13.12'
-    testImplementation 'com.github.hyperskill:hs-test:12.0.1'
+    testImplementation 'com.github.hyperskill:hs-test:12.0.2'
 }
 
 sourceSets {
