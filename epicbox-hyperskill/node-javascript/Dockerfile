@@ -1,4 +1,4 @@
-FROM hyperskill.azurecr.io/node:18.20.4-alpine
+FROM hyperskill.azurecr.io/node:18.20.4-bullseye-slim
 
 RUN apk add --no-cache python3 openjdk17-jdk curl bash
 
