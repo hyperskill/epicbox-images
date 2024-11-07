@@ -32,6 +32,7 @@ jobs:
     needs: build_debian_image
     runs-on: [ self-hosted, small ]
     strategy:
+      fail-fast: false
       matrix:
         - path: epicbox-gcc
           image_name: gcc
@@ -59,6 +60,7 @@ jobs:
     name: Build ${{ matrix.path }} image
     runs-on: [ self-hosted, small ]
     strategy:
+      fail-fast: false
       matrix:
         - path: epicbox-clojure
           image_name: clojure
