@@ -1,4 +1,4 @@
-FROM bitnami/minideb:bullseye
+FROM hyperskill.azurecr.io/bitnami/minideb:bullseye
 
 RUN install_packages \
   curl \

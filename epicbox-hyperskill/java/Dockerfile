@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM hyperskill.azurecr.io/openjdk:17-jdk-slim
 
 RUN apt-get update && \
     apt-get install --yes python3 unzip curl && \
