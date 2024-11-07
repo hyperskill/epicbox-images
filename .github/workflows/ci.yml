@@ -34,15 +34,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        - path: epicbox-gcc
-          image_name: gcc
-          image_tag: 10.2.1-1
-        - path: epicbox-hyperskill/gcc
-          image_name: hyperskill-gcc
-          image_tag: 10.2.1-1
-        - path: epicbox-mono
-          image_name: mono
-          image_tag: 6.10.0.104
+        include:
+          - path: epicbox-gcc
+            image_name: gcc
+            image_tag: 10.2.1-1
+          - path: epicbox-hyperskill/gcc
+            image_name: hyperskill-gcc
+            image_tag: 10.2.1-1
+          - path: epicbox-mono
+            image_name: mono
+            image_tag: 6.10.0.104
     timeout-minutes: 15
     steps:
       - name: Checkout code
@@ -62,75 +63,76 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        - path: epicbox-clojure
-          image_name: clojure
-          image_tag: tools-deps-1.11.1.1413-alpine
-        - path: epicbox-go
-          image_name: go
-          image_tag: 1.21-bullseye
-        - path: epicbox-haskell
-          image_name: haskell
-          image_tag: 8.8.4
-        - path: epicbox-hyperskill/go
-          image_name: hyperskill-go
-          image_tag: 1.21-bullseye
-        - path: epicbox-hyperskill/gradle
-          image_name: hyperskill-gradle
-          image_tag: 8.5.0-jdk17
-        - path: epicbox-hyperskill/gradle-spring
-          image_name: hyperskill-gradle-spring
-          image_tag: 8.5.0-jdk17
-        - path: epicbox-hyperskill/java
-          image_name: hyperskill-java
-          image_tag: 17-jdk-slim
-        - path: epicbox-hyperskill/node
-          image_name: hyperskill-node
-          image_tag: 18.20.4-bullseye-slim
-        - path: epicbox-hyperskill/node-javascript
-          image_name: hyperskill-node-javascript
-          image_tag: 18.20.4-bullseye-slim
-        - path: epicbox-hyperskill/python
-          image_name: hyperskill-python
-          image_tag: 3.10-slim
-        - path: epicbox-java
-          image_name: java
-          image_tag: 23-slim
-        - path: epicbox-kotlin
-          image_name: kotlin
-          image_tag: 2.0.0-jdk-23-slim
-        - path: epicbox-node
-          image_name: node
-          image_tag: 18.20.4-alpine
-        - path: epicbox-php
-          image_name: php
-          image_tag: 7.2.11-cli-alpine3.7
-        - path: epicbox-pmd
-          image_name: pmd
-          image_tag: 6.9.0-8u181-alpine
-        - path: epicbox-python/310
-          image_name: python
-          image_tag: 3.10.6-slim
-        - path: epicbox-python/311
-          image_name: python
-          image_tag: 3.11.5-slim
-        - path: epicbox-python/312
-          image_name: python
-          image_tag: 3.12.7-slim
-        - path: epicbox-ruby
-          image_name: ruby
-          image_tag: 2.5.3-alpine
-        - path: epicbox-scala/2
-          image_name: scala
-          image_tag: 2.13.12-8u342-slim
-        - path: epicbox-scala/3
-          image_name: scala
-          image_tag: 3.0.0-11.0.11-slim
-        - path: epicbox-typescript
-          image_name: typescript
-          image_tag: 4.8.4-18.20.4-bullseye-slim
-        - path: epicbox-hyperstyle
-          image_name: hyperstyle
-          image_tag: ij-2024.9
+        include:
+          - path: epicbox-clojure
+            image_name: clojure
+            image_tag: tools-deps-1.11.1.1413-alpine
+          - path: epicbox-go
+            image_name: go
+            image_tag: 1.21-bullseye
+          - path: epicbox-haskell
+            image_name: haskell
+            image_tag: 8.8.4
+          - path: epicbox-hyperskill/go
+            image_name: hyperskill-go
+            image_tag: 1.21-bullseye
+          - path: epicbox-hyperskill/gradle
+            image_name: hyperskill-gradle
+            image_tag: 8.5.0-jdk17
+          - path: epicbox-hyperskill/gradle-spring
+            image_name: hyperskill-gradle-spring
+            image_tag: 8.5.0-jdk17
+          - path: epicbox-hyperskill/java
+            image_name: hyperskill-java
+            image_tag: 17-jdk-slim
+          - path: epicbox-hyperskill/node
+            image_name: hyperskill-node
+            image_tag: 18.20.4-bullseye-slim
+          - path: epicbox-hyperskill/node-javascript
+            image_name: hyperskill-node-javascript
+            image_tag: 18.20.4-bullseye-slim
+          - path: epicbox-hyperskill/python
+            image_name: hyperskill-python
+            image_tag: 3.10-slim
+          - path: epicbox-java
+            image_name: java
+            image_tag: 23-slim
+          - path: epicbox-kotlin
+            image_name: kotlin
+            image_tag: 2.0.0-jdk-23-slim
+          - path: epicbox-node
+            image_name: node
+            image_tag: 18.20.4-alpine
+          - path: epicbox-php
+            image_name: php
+            image_tag: 7.2.11-cli-alpine3.7
+          - path: epicbox-pmd
+            image_name: pmd
+            image_tag: 6.9.0-8u181-alpine
+          - path: epicbox-python/310
+            image_name: python
+            image_tag: 3.10.6-slim
+          - path: epicbox-python/311
+            image_name: python
+            image_tag: 3.11.5-slim
+          - path: epicbox-python/312
+            image_name: python
+            image_tag: 3.12.7-slim
+          - path: epicbox-ruby
+            image_name: ruby
+            image_tag: 2.5.3-alpine
+          - path: epicbox-scala/2
+            image_name: scala
+            image_tag: 2.13.12-8u342-slim
+          - path: epicbox-scala/3
+            image_name: scala
+            image_tag: 3.0.0-11.0.11-slim
+          - path: epicbox-typescript
+            image_name: typescript
+            image_tag: 4.8.4-18.20.4-bullseye-slim
+          - path: epicbox-hyperstyle
+            image_name: hyperstyle
+            image_tag: ij-2024.9
     timeout-minutes: 15
     steps:
       - name: Checkout code
