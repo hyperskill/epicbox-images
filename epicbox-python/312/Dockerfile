@@ -1,4 +1,4 @@
-FROM python:3.12.5-slim
+FROM hyperskill.azurecr.io/python:3.12.5-slim
 
 
 ENV DEBIAN_FRONTEND=noninteractive
