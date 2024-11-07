@@ -1,5 +1,4 @@
-FROM hyperskill.azurecr.io/python:3.12.5-slim
-
+FROM hyperskill.azurecr.io/python:3.12.7-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NLTK_DIR=/usr/local/nltk_data
