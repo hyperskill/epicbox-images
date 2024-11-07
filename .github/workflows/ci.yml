@@ -20,7 +20,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-debian
-          image_name_tag: debian:bullseye
+          image_name: debian
+          image_tag: bullseye
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
           add_hash: false
@@ -34,7 +35,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-clojure
-          image_name_tag: clojure:1.9.0.397
+          image_name: clojure
+          image_tag: 1.9.0.397
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_gcc_image:
@@ -48,7 +50,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-gcc
-          image_name_tag: gcc:10.2.1
+          image_name: gcc
+          image_tag: 10.2.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_go_image:
@@ -61,7 +64,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-go
-          image_name_tag: go:1.18.2.1
+          image_name: go
+          image_tag: 1.18.2.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_haskell_image:
@@ -74,7 +78,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-haskell
-          image_name_tag: haskell:8.8.4
+          image_name: haskell
+          image_tag: 8.8.4
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_go_image:
@@ -87,7 +92,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/go
-          image_name_tag: hyperskill-go:1.18.2
+          image_name: hyperskill-go
+          image_tag: 1.18.2
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_gcc_image:
@@ -101,7 +107,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/gcc
-          image_name_tag: hyperskill-gcc:10.2.1
+          image_name: hyperskill-gcc
+          image_tag: 10.2.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_gradle_image:
@@ -114,7 +121,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/gradle
-          image_name_tag: hyperskill-gradle:8.5-jdk17
+          image_name: hyperskill-gradle
+          image_tag: 8.5-jdk17
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_gradle_spring_image:
@@ -127,7 +135,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/gradle-spring
-          image_name_tag: hyperskill-gradle-spring:8.5-jdk17
+          image_name: hyperskill-gradle-spring
+          image_tag: 8.5-jdk17
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_java_image:
@@ -140,7 +149,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/java
-          image_name_tag: hyperskill-java:17
+          image_name: hyperskill-java
+          image_tag: 17
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_node_image:
@@ -153,7 +163,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/node
-          image_name_tag: hyperskill-node:18.17.1
+          image_name: hyperskill-node
+          image_tag: 18.17.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_node_javascript_image:
@@ -166,7 +177,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/node-javascript
-          image_name_tag: hyperskill-node-javascript:18.17.1
+          image_name: hyperskill-node-javascript
+          image_tag: 18.17.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperskill_python_image:
@@ -179,7 +191,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperskill/python
-          image_name_tag: hyperskill-python:3.10
+          image_name: hyperskill-python
+          image_tag: 3.10
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_java_image:
@@ -192,7 +205,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-java
-          image_name_tag: java:23-slim
+          image_name: java
+          image_tag: 23-slim
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_kotlin_image:
@@ -205,7 +219,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-kotlin
-          image_name_tag: kotlin:2.0.0
+          image_name: kotlin
+          image_tag: 2.0.0
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_mono_image:
@@ -219,7 +234,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-mono
-          image_name_tag: mono:6.10.0.104
+          image_name: mono
+          image_tag: 6.10.0.104
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_node_image:
@@ -232,7 +248,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-node
-          image_name_tag: node:18.17.1
+          image_name: node
+          image_tag: 18.17.1
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_php_image:
@@ -245,7 +262,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-php
-          image_name_tag: php:7.2.6
+          image_name: php
+          image_tag: 7.2.6
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_pmd_image:
@@ -258,7 +276,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-pmd
-          image_name_tag: pmd:6.9.0
+          image_name: pmd
+          image_tag: 6.9.0
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_python_310_image:
@@ -271,7 +290,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-python/310
-          image_name_tag: python:3.10.6
+          image_name: python
+          image_tag: 3.10.6
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_python_311_image:
@@ -284,7 +304,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-python/311
-          image_name_tag: python:3.11.5
+          image_name: python
+          image_tag: 3.11.5
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_ruby_image:
@@ -297,7 +318,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-ruby
-          image_name_tag: ruby:2.5.3
+          image_name: ruby
+          image_tag: 2.5.3
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_scala2_image:
@@ -310,7 +332,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-scala/2
-          image_name_tag: scala:2.13.12
+          image_name: scala
+          image_tag: 2.13.12
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_scala3_image:
@@ -323,7 +346,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-scala/3
-          image_name_tag: scala:3.0.0
+          image_name: scala
+          image_tag: 3.0.0
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_typescript_image:
@@ -336,7 +360,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-typescript
-          image_name_tag: typescript:4.8.4
+          image_name: typescript
+          image_tag: 4.8.4
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
   build_hyperstyle_image:
@@ -349,7 +374,8 @@ jobs:
         uses: ./.github/workflows/actions/build
         with:
           path: epicbox-hyperstyle
-          image_name_tag: hyperstyle:ij-2024.9
+          image_name: hyperstyle
+          image_tag: ij-2024.9
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
