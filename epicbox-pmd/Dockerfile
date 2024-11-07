@@ -1,4 +1,4 @@
-FROM openjdk:8u181-alpine
+FROM hyperskill.azurecr.io/openjdk:8u181-alpine
 
 ENV PMD_VERSION 6.9.0
 ENV PATH /opt/pmd/bin:$PATH

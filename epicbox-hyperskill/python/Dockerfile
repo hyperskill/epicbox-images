@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM hyperskill.azurecr.io/python:3.10-slim
 
 ENV INSIDE_DOCKER=1
 
