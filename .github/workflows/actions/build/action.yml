@@ -8,8 +8,11 @@ inputs:
     description: 'Dockerfile'
     required: true
     default: 'Dockerfile'
-  image_name_tag:
-    description: 'Image name:tag'
+  image_name:
+    description: 'Image name'
+    required: true
+  image_tag:
+    description: 'Image tag'
     required: true
   username:
     description: 'Registry username'
@@ -28,15 +31,17 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
         registry: hyperskill.azurecr.io
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      with:
+        driver-opts: image=hyperskill.azurecr.io/moby/buildkit:buildx-stable-1
 
     - if: inputs.add_hash == 'true'
       run: |
@@ -49,6 +54,13 @@ runs:
         echo "hash=" >> "$GITHUB_ENV"
       shell: bash
 
+    - name: Make image name
+      run: |
+        IMAGE=hyperskill.azurecr.io/epicbox/${{ inputs.image_name }}
+        echo "image_name=$IMAGE" >> "$GITHUB_ENV"
+        echo "image_tag=$IMAGE:${{ inputs.image_tag }}${{ env.hash }}" >> "$GITHUB_ENV"
+      shell: bash
+
     - name: Build base
       uses: docker/build-push-action@v3
       with:
@@ -56,11 +68,11 @@ runs:
         pull: true
         push: true
         file: ${{ inputs.path }}/${{ inputs.dockerfile }}
-        tags: hyperskill.azurecr.io/epicbox/${{ inputs.image_name_tag }}${{ env.hash }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        tags: ${{ env.image_tag }}
+        cache-to: type=registry,ref=${{ env.image_name }}:buildcache,mode=max
+        cache-from: type=registry,ref=${{ env.image_name }}:buildcache
 
     - name: Display image:tag in summary
       run: |
-        echo "hyperskill.azurecr.io/epicbox/${{ inputs.image_name_tag }}${{ env.hash }}" >> $GITHUB_STEP_SUMMARY
+        echo "${{ env.image_tag }}" >> $GITHUB_STEP_SUMMARY
       shell: bash

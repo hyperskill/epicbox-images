@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM hyperskill.azurecr.io/debian:bullseye
 
 ENV GCC_VERSION 10.2.1-1
 

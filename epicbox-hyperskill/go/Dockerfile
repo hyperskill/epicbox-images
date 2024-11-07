@@ -1,4 +1,4 @@
-FROM golang:1.21-bullseye
+FROM hyperskill.azurecr.io/golang:1.21-bullseye
 
 ENV GO111MODULE=on
 

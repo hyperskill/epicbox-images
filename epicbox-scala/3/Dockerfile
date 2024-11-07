@@ -1,4 +1,4 @@
-FROM openjdk:11.0.11-slim
+FROM hyperskill.azurecr.io/openjdk:11.0.11-slim
 
 ENV SCALA_VERSION 3.0.0
 ENV PATH /opt/scala/bin:$PATH
