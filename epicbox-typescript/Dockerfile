@@ -1,4 +1,4 @@
-FROM hyperskill.azurecr.io/node:18.12.0-bullseye-slim
+FROM hyperskill.azurecr.io/node:18.20.4-bullseye-slim
 
 ENV TYPESCRIPT_VERSION=4.8.4
 ENV TYPES_NODE_VERSION=18.11.9
