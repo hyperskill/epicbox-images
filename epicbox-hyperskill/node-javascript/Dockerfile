@@ -12,12 +12,12 @@ RUN apt-get update && \
 
 RUN mkdir /checker && \
     curl -L -o /checker/kotlin.zip \
-    https://github.com/JetBrains/kotlin/releases/download/v1.9.10/kotlin-compiler-1.9.10.zip && \
+    https://github.com/JetBrains/kotlin/releases/download/v2.0.0/kotlin-compiler-2.0.0.zip && \
     unzip /checker/kotlin.zip -d /checker && \
     rm /checker/kotlin.zip
 
 RUN curl -L -o /checker/hs-test.jar \
-    https://github.com/hyperskill/hs-test/releases/download/v10.0.3/hs-test-10.0.3.jar
+    https://github.com/hyperskill/hs-test/releases/download/v12.0.3/hs-test-12.0.3.jar
 
 ENV PATH="/checker/kotlinc/bin:$PATH"
 
