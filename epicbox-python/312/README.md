@@ -1,1 +1,1 @@
-poetry export --without-hashes --output requirements.txt
+poetry export --with jetbrains --without-hashes --output requirements.txt
