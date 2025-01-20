@@ -12,7 +12,7 @@ concurrency:
 jobs:
   build_debian_image:
     name: Build epicbox/debian image
-    runs-on: [ self-hosted, small ]
+    runs-on: arc-runners-small
     timeout-minutes: 15
     steps:
       - name: Checkout code
@@ -30,7 +30,7 @@ jobs:
   build_debian_images:
     name: Build ${{ matrix.path }} image
     needs: build_debian_image
-    runs-on: [ self-hosted, small ]
+    runs-on: arc-runners-small
     strategy:
       fail-fast: false
       matrix:
@@ -59,7 +59,7 @@ jobs:
 
   build_images:
     name: Build ${{ matrix.path }} image
-    runs-on: [ self-hosted, small ]
+    runs-on: arc-runners-small
     strategy:
       fail-fast: false
       matrix:
@@ -152,7 +152,7 @@ jobs:
       - build_debian_image
       - build_debian_images
       - build_images
-    runs-on: [ self-hosted, small ]
+    runs-on: arc-runners-small
     timeout-minutes: 30
     steps:
       - uses: hyperskill/azure-purge-untagged@v3.0.0
