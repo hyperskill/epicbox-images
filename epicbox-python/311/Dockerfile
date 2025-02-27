@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt /tmp
 
 RUN pip install --no-cache-dir -r /tmp/requirements.txt \
-    && python -m nltk.downloader -d ${NLTK_DIR} averaged_perceptron_tagger brown gutenberg movie_reviews omw-1.4 punkt punkt_tab treebank word2vec_sample wordnet \
+    && python -m nltk.downloader -d ${NLTK_DIR} averaged_perceptron_tagger averaged_perceptron_tagger_eng brown gutenberg movie_reviews omw-1.4 punkt punkt_tab treebank word2vec_sample wordnet \
     && wget -qO- https://download.cdn.yandex.net/mystem/mystem-3.1-linux-64bit.tar.gz | tar xvz -C ${MYSTEM_DIR} \
     && rm /tmp/requirements.txt
 
