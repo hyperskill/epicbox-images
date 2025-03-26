@@ -9,7 +9,7 @@ ARG KOTLINX_SERIALIZATION_JVM_URL=https://repo1.maven.org/maven2/org/jetbrains/k
 ARG KOTLINX_SERIALIZATION_JSON_JVM_URL=https://repo1.maven.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.7.1/kotlinx-serialization-json-jvm-1.7.1.jar
 
 ENV DEBIAN_FRONTEND=noninteractive
-# Определяем общий classpath для Kotlin
+# Defining a Common Classpath for Kotlin
 ENV KOTLIN_CLASSPATH="/usr/lib/kotlinc/lib/atomicfu-jvm-0.25.0.jar:/usr/lib/kotlinc/lib/kotlinx-cli-jvm-0.3.6.jar:/usr/lib/kotlinc/lib/kotlinx-coroutines-core-jvm.jar:/usr/lib/kotlinc/lib/kotlinx-datetime-jvm-0.6.0.jar:/usr/lib/kotlinc/lib/kotlinx-html-jvm-0.11.0.jar:/usr/lib/kotlinc/lib/kotlinx-serialization-core-jvm-1.7.1.jar:/usr/lib/kotlinc/lib/kotlinx-serialization-json-jvm-1.7.1.jar"
 
 RUN apt-get update && \
