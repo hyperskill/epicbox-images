@@ -40,5 +40,3 @@ ENV NODE_PATH=/usr/local/lib/node_modules
 ENV PATH="/checker/kotlinc/bin:$PATH"
 
 COPY checker/ /checker/
-
-COPY sandbox/ /sandbox/
