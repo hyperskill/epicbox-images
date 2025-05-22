@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     linux-headers-amd64 \
     unzip \
     && pip install aiosmtpd beautifulsoup4 pyyaml \
-    && pip install https://github.com/hyperskill/hs-test-python/archive/v11.0.0.tar.gz \
+    && pip install https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz \
     && apt-get remove -y --purge python3-dev linux-headers-amd64 \
     && apt-get autoremove -y \
     && apt-get clean \

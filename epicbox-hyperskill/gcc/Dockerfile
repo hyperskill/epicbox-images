@@ -17,7 +17,7 @@ RUN apt-get update \
     python3-pip \
     unzip \
   && rm -rf /var/lib/apt/lists/* \
-  && pip3 install https://github.com/hyperskill/hs-test-python/archive/refs/tags/v11.0.0.tar.gz \
+  && pip3 install https://github.com/hyperskill/hs-test-python/archive/refs/tags/v11.0.28.tar.gz \
   && mkdir /checker \
   && curl -L -o /checker/kotlin.zip \
     https://github.com/JetBrains/kotlin/releases/download/v2.0.0/kotlin-compiler-2.0.0.zip \
