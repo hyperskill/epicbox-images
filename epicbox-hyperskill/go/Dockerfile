@@ -1,21 +1,39 @@
 FROM hyperskill.azurecr.io/golang:1.21-bullseye
 
 ENV GO111MODULE=on
+ARG PYTHON_VERSION=3.10.13
 
 RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
+    build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libffi-dev \
+    liblzma-dev \
     openjdk-17-jdk \
     curl \
     bash \
-    linux-headers-amd64 \
     unzip \
-    && pip install aiosmtpd beautifulsoup4 pyyaml \
-    && pip install https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz \
-    && apt-get remove -y --purge python3-dev linux-headers-amd64 \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
+RUN curl https://pyenv.run | bash && \
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
+    echo 'eval "$(pyenv init -)"' >> ~/.bashrc && \
+    . ~/.bashrc && \
+    pyenv install $PYTHON_VERSION && \
+    pyenv global $PYTHON_VERSION && \
+    ln -sf $(pyenv which python) /usr/bin/python3
+
+RUN python3 -m pip install --no-cache \
+    https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz  \
+    aiosmtpd \
+    beautifulsoup4 \
+    pyyaml
 
 RUN mkdir /checker  \
     && curl -L -o /checker/kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v2.0.0/kotlin-compiler-2.0.0.zip  \
