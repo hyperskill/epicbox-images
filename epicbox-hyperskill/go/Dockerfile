@@ -1,33 +1,16 @@
-FROM hyperskill.azurecr.io/golang:1.21-bullseye
+FROM hyperskill.azurecr.io/python:3.10-slim
 
+ENV GO_VERSION=1.21.0
 ENV GO111MODULE=on
-ARG PYTHON_VERSION=3.10.13
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libssl-dev \
-    zlib1g-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    libffi-dev \
-    liblzma-dev \
-    openjdk-17-jdk \
-    curl \
-    bash \
-    unzip \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+RUN apt-get update && \
+    apt-get install -y curl bash build-essential unzip openjdk-17-jdk git ca-certificates && \
+    curl -L https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz && \
+    ln -s /usr/local/go/bin/go /usr/bin/go && \
+    ln -s /usr/local/go/bin/gofmt /usr/bin/gofmt && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN curl https://pyenv.run | bash && \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
-    echo 'eval "$(pyenv init -)"' >> ~/.bashrc && \
-    . ~/.bashrc && \
-    pyenv install $PYTHON_VERSION && \
-    pyenv global $PYTHON_VERSION && \
-    ln -sf $(pyenv which python) /usr/bin/python3
+ENV PATH="/usr/local/go/bin:$PATH"
 
 RUN python3 -m pip install --no-cache \
     https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz  \
