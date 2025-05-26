@@ -1,12 +1,15 @@
-import os.path
+import json
+import os
 
-from util import TASK_ROOT, finish, finish_badly, run_process
+from util import TASK_ROOT, run_process
 
 FAILED_TEST_BEGIN = '#educational_plugin FAILED + '
 FAILED_TEST_CONTINUE = '#educational_plugin '
+OK_CODE = '0'
+ASSERTION_ERROR_LINE = 'AssertionError: '
+
 
 TESTS_FILES = [
-    f'{TASK_ROOT}/tests.py',
     f'{TASK_ROOT}/test/tests.py'
 ]
 
@@ -14,29 +17,41 @@ TESTS_FILES = [
 def is_python_tests() -> bool:
     return any(os.path.isfile(f) for f in TESTS_FILES)
 
-
 def process_python():
-    test_file = ''
-    for file in TESTS_FILES:
-        if os.path.isfile(file):
-            test_file = file
-            break
+    score = 1
+    feedback = ''
+    output = []
 
-    python_execute_command = [
-        'python3', test_file, '--inside_docker'
-    ]
+    code, stdout, stderr = run_process([
+        'python3', '-m', 'unittest', 'discover', '-s', 'test'
+    ])
+    stdout = stdout.splitlines()
+    stderr = stderr.splitlines()
 
-    code, out, err = run_process(python_execute_command)
-    out = out.strip().splitlines()
+    if code != OK_CODE:
+        score = 0
+        for line_index, line in enumerate(stderr):
+            if line.startswith(ASSERTION_ERROR_LINE):
+                feedback = '\n'.join([
+                    line[len(ASSERTION_ERROR_LINE):],
+                    *stderr[line_index + 1:]
+                ]).strip()
+                feedback = (feedback.split('----------------------------------------------------------------------')[0]
+                            .strip())
+                break
+        if not feedback:
+            feedback = (
+                'Cannot check the submission.\n\nPerhaps your program '
+                'has fallen into an infinite loop or created too many objects in memory. '
+                'If you are sure that this is not the case, please send the report to support@hyperskill.org\n'
+                'stdout:\n{stdout}\n\nstderr:\n{stderr}'
+                .format(stdout='\n'.join(stdout), stderr='\n'.join(stderr))
+            )
 
-    if code != 0:
-        finish_badly(f'Exit code = {code}')
-
-    if any(line.startswith(FAILED_TEST_BEGIN) for line in out):
-        output = []
+    elif any(line.startswith(FAILED_TEST_BEGIN) for line in stdout):
+        score = 0
         output_started = False
-
-        for line in out:
+        for line in stdout:
             if output_started and line.startswith(FAILED_TEST_CONTINUE):
                 output.append(line[len(FAILED_TEST_CONTINUE):])
 
@@ -46,7 +61,8 @@ def process_python():
 
         feedback = '\n'.join(output).strip()
 
-        finish(False, feedback)
-
-    else:
-        finish(True, '')
+    result = {
+        'score': score,
+        'feedback': feedback,
+    }
+    print(json.dumps(result))
