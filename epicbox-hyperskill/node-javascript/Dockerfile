@@ -32,7 +32,7 @@ RUN curl -L -o /checker/hs-test.jar \
     https://github.com/hyperskill/hs-test/releases/download/v12.0.3/hs-test-12.0.3.jar
 
 RUN python3 -m pip install --no-cache \
-    https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz
+    https://github.com/hyperskill/hs-test-python/archive/v11.0.29.tar.gz
 
 RUN npm install -g https://github.com/hyperskill/sync-input/archive/v1.tar.gz
 
@@ -40,3 +40,4 @@ ENV NODE_PATH=/usr/local/lib/node_modules
 ENV PATH="/checker/kotlinc/bin:$PATH"
 
 COPY checker/ /checker/
+COPY sandbox/ /sandbox/

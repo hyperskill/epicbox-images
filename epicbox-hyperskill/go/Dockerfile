@@ -30,7 +30,7 @@ RUN curl https://pyenv.run | bash && \
     ln -sf $(pyenv which python) /usr/bin/python3
 
 RUN python3 -m pip install --no-cache \
-    https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz  \
+    https://github.com/hyperskill/hs-test-python/archive/v11.0.29.tar.gz  \
     aiosmtpd \
     beautifulsoup4 \
     pyyaml
