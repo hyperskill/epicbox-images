@@ -1,6 +1,6 @@
 FROM hyperskill.azurecr.io/node:18.20.4-bullseye-slim
 
-ARG PYTHON_VERSION=3.10.13
+ARG PYTHON_VERSION=3.14
 
 RUN apt-get update && \
     apt-get install -y curl unzip wget git openjdk-17-jdk make build-essential \
@@ -32,7 +32,7 @@ RUN curl -L -o /checker/hs-test.jar \
     https://github.com/hyperskill/hs-test/releases/download/v12.0.3/hs-test-12.0.3.jar
 
 RUN python3 -m pip install --no-cache \
-    https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz
+    https://github.com/hyperskill/hs-test-python/archive/v11.0.32.tar.gz
 
 RUN npm install -g https://github.com/hyperskill/sync-input/archive/v1.tar.gz
 
