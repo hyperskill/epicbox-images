@@ -1,7 +1,7 @@
 FROM hyperskill.azurecr.io/debian:bullseye
 
 ENV GCC_VERSION 10.2.1-1
-ARG PYTHON_VERSION=3.10.13
+ARG PYTHON_VERSION=3.14
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -35,7 +35,7 @@ RUN curl https://pyenv.run | bash && \
     ln -sf $(pyenv which python) /usr/bin/python3
 
 RUN python3 -m pip install --no-cache \
-    https://github.com/hyperskill/hs-test-python/archive/v11.0.28.tar.gz  \
+    https://github.com/hyperskill/hs-test-python/archive/v11.0.32.tar.gz  \
     aiosmtpd  \
     beautifulsoup4  \
     pyyaml
