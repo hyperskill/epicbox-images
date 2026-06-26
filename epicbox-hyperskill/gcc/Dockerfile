@@ -42,7 +42,7 @@ RUN python3 -m pip install --no-cache \
 
 RUN mkdir /checker \
   && curl -L -o /checker/kotlin.zip \
-    https://github.com/JetBrains/kotlin/releases/download/v2.0.0/kotlin-compiler-2.0.0.zip \
+    https://github.com/JetBrains/kotlin/releases/download/v2.3.0/kotlin-compiler-2.3.0.zip \
   && unzip /checker/kotlin.zip -d /checker \
   && apt-get remove -y unzip \
   && rm /checker/kotlin.zip \
