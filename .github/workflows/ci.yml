@@ -148,18 +148,31 @@ jobs:
 
   clean_untagged_images:
     name: Clean untagged images
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - build_debian_image
       - build_debian_images
       - build_images
     runs-on: arc-runners-small
     timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: hyperskill/azure-purge-untagged@v3.0.0
+      - name: Azure Login
+        uses: azure/login@v2
         with:
-          client_id: ${{ secrets.CLIENT_ID }}
-          client_secret: ${{ secrets.CLIENT_SECRET }}
-          subscription_id: ${{ secrets.SUBSCRIPTION_ID }}
-          tenant_id: ${{ secrets.TENANT_ID }}
-          repository_filter: epicbox/.*
-          registry: hyperskill
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+
+      - name: Purge untagged Epicbox images
+        run: |
+          PURGE_CMD="acr purge \
+            --filter 'epicbox/.*:unknown.tag' \
+            --ago 0d \
+            --untagged"
+          az acr run \
+            --cmd "$PURGE_CMD" \
+            --registry hyperskill \
+            /dev/null
